@@ -27,7 +27,7 @@ export default function flattenField( field, containerId, accumulator ) {
 
 	// The complex fields represent a nested structure of fields.
 	// So we need to flat them as well.
-	if ( field.type === 'complex' ) {
+	if ( Array.isArray(field.value) && field.value.length > 0 && Array.isArray(field.value[0].fields)) {
 		field.value.forEach( ( group ) => {
 			group.id = uniqueId();
 			group.container_id = containerId;
